@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belgrano&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/sass/style.scss" />
+
+    <title>Marketplace</title>
+  </head>
+
+  <body>
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="header">
+      <!-- LOGO -->
+      <div class="header__logo">
+        <img src="/img/Artzie..svg" alt="Artzie" />
+      </div>
+
+      <!-- MENÚ -->
+      <nav class="header__nav">
+        <a href="#">Market</a>
+        <a href="#">How it works</a>
+        <a href="#">Gallery</a>
+        <a href="#">About</a>
+      </nav>
+
+      <!-- ACCIONES -->
+      <div class="header__actions">
+        <a href="#" class="header__signup">Sign Up</a>
+        <a href="#" class="header__signin">Sign In</a>
+      </div>
+    </header>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <main class="hero">
+      <!-- =========================
+           COLUMNA IZQUIERDA
+      ========================== -->
+      <section class="hero__content">
+        <!-- TÍTULO PRINCIPAL -->
+        <h1 class="hero__title">
+          The largest NFT market<br />
+          with exceptional items<br />
+          on the bid
+        </h1>
+
+        <!-- DESCRIPCIÓN -->
+        <p class="hero__description">
+          Collectible and non-fungible tokens in your hands
+        </p>
+
+        <!-- BOTONES -->
+        <div class="hero__actions">
+          <a href="#" class="hero__explore"> Explore </a>
+
+          <a href="#" class="hero__learn">
+            <span>Learn more</span>
+            <img src="/img/Arrow (1).svg" alt="" />
+          </a>
+        </div>
+
+        <!-- =========================
+             FEATURED ARTWORK
+        ========================== -->
+        <div class="featured">
+          <!-- TÍTULO -->
+          <h2 class="featured__title">Featured Artwork</h2>
+
+          <!-- IMAGEN 01 -->
+          <div class="featured__item featured__item--01">
+            <div class="featured__crop">
+              <img src="/img/01.jpg" alt="Featured NFT artwork" />
+            </div>
+          </div>
+
+          <!-- IMAGEN 02 -->
+          <div class="featured__item featured__item--02">
+            <div class="featured__crop">
+              <img src="/img/02.jpg" alt="Featured NFT artwork" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+           COLUMNA DERECHA
+      ========================== -->
+      <section class="hero__artwork">
+        <!-- IMAGEN PRINCIPAL -->
+        <div class="hero__image-mask">
+          <img
+            class="hero__main-image"
+            src="./img/image.png"
+            alt="NFT artwork"
+          />
+        </div>
+
+        <!-- =========================
+             BID CARD
+        ========================== -->
+        <div class="bid-card">
+          <div class="bid-card__top">
+            <!-- ARTISTA -->
+            <div class="bid-card__artist">
+              <img src="/img/artist.jpg" alt="Artist" />
+
+              <div>
+                <span>@somonchain</span>
+                <h3>Artwork #01</h3>
+              </div>
+            </div>
+
+            <!-- PRECIO -->
+            <div class="bid-card__price">
+              <span>Current Bid</span>
+              <strong>1.00 ETH</strong>
+            </div>
+          </div>
+
+          <!-- ACCIONES -->
+          <div class="bid-card__actions">
+            <a href="#" class="bid-card__button"> Bid Now </a>
+
+            <a href="#" class="bid-card__link"> View Artwork </a>
+          </div>
+        </div>
+
+        <!-- =========================
+             ESTADÍSTICAS
+        ========================== -->
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <strong>50k+</strong>
+            <span>Artwork</span>
+          </div>
+
+          <div class="hero__stat">
+            <strong>30k+</strong>
+            <span>Artist</span>
+          </div>
+
+          <div class="hero__stat">
+            <strong>20k+</strong>
+            <span>Auction</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

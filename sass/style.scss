@@ -1,0 +1,473 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  background-color: $color-bg;
+  color: $color-text;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  width: $container-width;
+  height: 75px;
+  margin: 0 auto;
+  position: relative;
+
+  background: linear-gradient(
+    to right,
+    #ffffff 0,
+    #ffffff 675px,
+    $color-dark 675px,
+    $color-dark 100%
+  );
+
+  &__logo {
+    position: absolute;
+    left: 100px;
+    top: 20.625px;
+
+    width: 74.375px;
+    height: 28.75px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    left: 270px;
+    top: 28.75px;
+
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+    a {
+      font-size: 11.25px;
+      line-height: 16.875px;
+      white-space: nowrap;
+    }
+  }
+
+  &__signup {
+    position: absolute;
+    left: 951.875px;
+    top: 31.25px;
+
+    font-size: 11.25px;
+    font-weight: 600;
+    line-height: 16.875px;
+
+    color: #ffffff;
+    white-space: nowrap;
+  }
+
+  &__signin {
+    position: absolute;
+    left: 1012.5px;
+    top: 22.5px;
+
+    width: 87.5px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $color-primary;
+    color: #ffffff;
+
+    font-size: 11.25px;
+    font-weight: 600;
+  }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  width: $container-width;
+  height: 600px;
+  margin: 0 auto;
+
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 675px 525px;
+
+  /* =========================
+     LEFT
+  ========================= */
+
+  &__content {
+    width: 575px;
+    margin-left: 100px;
+    padding-top: 50px;
+  }
+
+  &__title {
+    width: 575px;
+
+    font-family: "Belgrano", serif;
+    font-size: 45px;
+    line-height: 60px;
+    font-weight: 400;
+
+    color: $color-text;
+  }
+
+  &__description {
+    margin-top: 10px;
+
+    font-size: 15px;
+    line-height: 25px;
+
+    color: #8e8e8e;
+  }
+
+  &__actions {
+    margin-top: 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__explore {
+    width: 150px;
+    height: 37.5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $color-primary;
+    color: #ffffff;
+
+    font-size: 11.25px;
+    font-weight: 600;
+  }
+
+  &__learn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 11.25px;
+
+    span {
+      text-decoration: underline;
+    }
+
+    img {
+      width: 18px;
+      display: block;
+    }
+  }
+
+  /* =========================
+     RIGHT
+  ========================= */
+
+  &__artwork {
+    position: relative;
+    overflow: hidden;
+
+    background-color: $color-dark;
+  }
+
+  /* =========================
+   MAIN ARTWORK
+========================= */
+
+  &__image-mask {
+    position: absolute;
+
+    left: 38px;
+    top: 20px;
+
+    width: 340px;
+    height: 330px;
+
+    /* Necesario para colocar la silueta detrás */
+    z-index: 0;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+
+      /*
+      Un poquito más grande que la imagen:
+      4px por cada lateral
+      y 6px por arriba.
+    */
+      left: -4px;
+      top: -6px;
+
+      width: 348px;
+      height: 340px;
+
+      /*
+      Usamos el mismo PNG como máscara,
+      así copiamos exactamente su forma.
+    */
+      -webkit-mask-image: url("/img/image.png");
+      mask-image: url("/img/image.png");
+
+      -webkit-mask-size: contain;
+      mask-size: contain;
+
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+
+      -webkit-mask-position: center;
+      mask-position: center;
+
+      /*
+      Silueta del mismo color que
+      el fondo oscuro.
+    */
+      background-color: $color-dark;
+
+      /*
+      Borde blanco fino alrededor
+      de la silueta.
+    */
+      filter: drop-shadow(-1px 0 0 #ffffff) drop-shadow(1px 0 0 #ffffff)
+        drop-shadow(0 -1px 0 #ffffff) drop-shadow(0 1px 0 #ffffff);
+
+      z-index: 0;
+    }
+  }
+
+  &__main-image {
+    position: relative;
+    z-index: 1;
+
+    width: 340px;
+    height: 330px;
+
+    display: block;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* =========================
+     STATS
+  ========================= */
+
+  &__stats {
+    position: absolute;
+
+    left: 50%;
+    bottom: 12px;
+
+    transform: translateX(-50%);
+
+    width: 345px;
+
+    @include flex-between;
+  }
+
+  &__stat {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+
+    strong {
+      color: $color-primary;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    span {
+      color: #ffffff;
+      font-size: 9px;
+    }
+  }
+}
+
+/* =========================
+   BID CARD
+========================= */
+
+.bid-card {
+  position: absolute;
+
+  left: 50%;
+  bottom: 45px;
+
+  transform: translateX(-50%);
+
+  width: 345px;
+  padding: 14px 16px;
+
+  background-color: #ffffff;
+
+  &__top {
+    @include flex-between;
+    gap: 20px;
+  }
+
+  &__artist {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      width: 42px;
+      height: 42px;
+
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    span {
+      display: block;
+
+      font-size: 10px;
+      color: $color-gray;
+    }
+
+    h3 {
+      margin-top: 3px;
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__price {
+    text-align: right;
+
+    span {
+      display: block;
+
+      font-size: 10px;
+      color: $color-gray;
+    }
+
+    strong {
+      display: block;
+      margin-top: 3px;
+
+      font-size: 12px;
+    }
+  }
+
+  &__actions {
+    margin-top: 14px;
+    padding-top: 12px;
+
+    border-top: 1px solid #eeeeee;
+
+    @include flex-between;
+  }
+
+  &__button {
+    padding: 8px 28px;
+
+    background-color: $color-primary;
+    color: #ffffff;
+
+    font-size: 10px;
+  }
+
+  &__link {
+    color: $color-primary;
+    font-size: 10px;
+  }
+}
+
+/* =========================
+   FEATURED ARTWORK
+========================= */
+
+.featured {
+  position: absolute;
+
+  left: 100px;
+  top: 373.75px;
+
+  width: 530px;
+  height: 190.625px;
+
+  &__title {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-family: "Belgrano", serif;
+    font-size: 20px;
+    font-weight: 400;
+
+    color: #2e2f38;
+  }
+
+  &__item {
+    position: absolute;
+    top: 40.625px;
+
+    width: 255px;
+    height: 150px;
+
+    padding: 5px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #8e8e8e;
+
+    box-shadow: 0 15px 31.25px rgba(0, 0, 0, 0.1);
+  }
+
+  &__crop {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+      object-fit: cover;
+
+      transform: scale(1.25) translateY(10px);
+      transform-origin: center;
+    }
+  }
+
+  &__item--01 {
+    left: 0;
+  }
+
+  &__item--02 {
+    left: 275px;
+  }
+}
