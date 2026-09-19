@@ -34,10 +34,11 @@ a {
 
   background: linear-gradient(
     to right,
-    #ffffff 0,
+    #effdfc 0,
+    #ffffff 270px,
     #ffffff 675px,
-    $color-dark 675px,
-    $color-dark 100%
+    $color-text 675px,
+    $color-text 100%
   );
 
   &__logo {
@@ -118,6 +119,11 @@ a {
   display: grid;
   grid-template-columns: 675px 525px;
 
+  background:
+    radial-gradient(ellipse 270px 600px at 0 0, #effdfc, transparent),
+    radial-gradient(ellipse 230px 170px at 675px 600px, #effdfc, transparent),
+    #ffffff;
+
   /* =========================
      LEFT
   ========================= */
@@ -139,8 +145,34 @@ a {
     color: $color-text;
   }
 
+  &__highlight {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 175px;
+      height: 61px;
+      background: url("/img/Vector (1).svg") center / contain no-repeat;
+      pointer-events: none;
+    }
+  }
+
   &__description {
+    position: relative;
     margin-top: 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      width: 51px;
+      height: 2px;
+      background-color: $color-primary;
+    }
 
     font-size: 15px;
     line-height: 25px;
@@ -196,7 +228,24 @@ a {
     position: relative;
     overflow: hidden;
 
-    background-color: $color-dark;
+    background-color: $color-text;
+    isolation: isolate;
+
+    &::before {
+      content: "Artzie.";
+      position: absolute;
+      left: 525px;
+      top: 0;
+      transform: rotate(90deg);
+      transform-origin: top left;
+      font-family: "Belgrano", serif;
+      font-size: 180px;
+      line-height: 150px;
+      color: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: -1;
+    }
   }
 
   /* =========================
@@ -206,24 +255,24 @@ a {
   &__image-mask {
     position: absolute;
 
-    left: 26px;
-    top: 10px;
+    left: 35px;
+    top: 12.5px;
 
-    width: 425px;
-    height: 425px;
+    width: 400px;
+    height: 400px;
     z-index: 0;
 
     &::before {
       content: "";
       position: absolute;
       /* Ajustado al arco visible del PNG, descontando su margen transparente.
-         Separación interior: unos 4px a los lados y 6px arriba. */
-      left: 27px;
-      top: 15px;
-      width: 370px;
-      height: 359px;
+         Separación interior: unos 9px a los lados y 12px arriba. */
+      left: 20px;
+      top: 8.5px;
+      width: 360px;
+      height: 350px;
       border: 1px solid #ffffff;
-      border-radius: 50% 50% 0 0 / 187px 187px 0 0;
+      border-radius: 50% 50% 0 0 / 180px 180px 0 0;
     }
   }
 
@@ -247,12 +296,12 @@ a {
   &__stats {
     position: absolute;
 
-    left: 50%;
-    bottom: 40px;
+    left: 235px;
+    bottom: 37.5px;
 
     transform: translateX(-50%);
 
-    width: 345px;
+    width: 370px;
 
     @include flex-between;
   }
@@ -264,13 +313,14 @@ a {
 
     strong {
       color: $color-primary;
-      font-size: 14px;
+      font-size: 20px;
+      line-height: 30px;
       font-weight: 600;
     }
 
     span {
       color: #ffffff;
-      font-size: 9px;
+      font-size: 11.25px;
     }
   }
 }
@@ -282,14 +332,14 @@ a {
 .bid-card {
   position: absolute;
 
-  left: 238.5px;
-  bottom: 115px;
+  left: 235px;
+  bottom: 90px;
   z-index: 2;
 
   transform: translateX(-50%);
 
-  width: 396px;
-  padding: 14px 16px;
+  width: 380px;
+  padding: 20px;
 
   background-color: #ffffff;
 
@@ -304,8 +354,8 @@ a {
     gap: 10px;
 
     img {
-      width: 42px;
-      height: 42px;
+      width: 37.5px;
+      height: 37.5px;
 
       object-fit: cover;
       border-radius: 50%;
@@ -314,14 +364,16 @@ a {
     span {
       display: block;
 
-      font-size: 10px;
+      font-size: 11.25px;
+      line-height: 16.875px;
       color: $color-gray;
     }
 
     h3 {
-      margin-top: 3px;
+      margin-top: 0;
 
-      font-size: 12px;
+      font-size: 15px;
+      line-height: 22.5px;
       font-weight: 600;
     }
   }
@@ -332,39 +384,51 @@ a {
     span {
       display: block;
 
-      font-size: 10px;
+      font-size: 11.25px;
+      line-height: 16.875px;
       color: $color-gray;
     }
 
     strong {
       display: block;
-      margin-top: 3px;
+      margin-top: 0;
 
-      font-size: 12px;
+      font-size: 15px;
+      line-height: 22.5px;
     }
   }
 
   &__actions {
-    margin-top: 14px;
-    padding-top: 12px;
+    margin-top: 18.75px;
+    padding-top: 20px;
 
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid #62636b;
 
     @include flex-between;
   }
 
   &__button {
-    padding: 8px 28px;
+    width: 165px;
+    height: 30px;
+
+    @include flex-center;
 
     background-color: $color-primary;
     color: #ffffff;
 
-    font-size: 10px;
+    font-size: 11.25px;
+    line-height: 16.875px;
   }
 
   &__link {
+    width: 165px;
+    height: 30px;
+
+    @include flex-center;
+
     color: $color-primary;
-    font-size: 10px;
+    font-size: 11.25px;
+    line-height: 16.875px;
   }
 }
 
